@@ -19,7 +19,7 @@ limitations under the License.
 @{
       ModuleToProcess = 'ScsmMpcPx.psm1'
 
-        ModuleVersion = '0.0.0.1'
+        ModuleVersion = '0.9.0.1'
 
                  GUID = '351fa979-6dfe-41a7-8e47-3b181fd74dd6'
 
@@ -40,10 +40,6 @@ limitations under the License.
 
       RequiredModules = @(
                         'ScsmPx'
-                        )
-
-     ScriptsToProcess = @(
-                        # TODO: Consider adding a script file to verify sn.exe is in the current path and to verify the authoring toolkit and other requirements are installed/available
                         )
 
       AliasesToExport = @(

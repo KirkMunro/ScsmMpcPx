@@ -22,13 +22,7 @@ Invoke-Snippet -Name Module.Initialize
 
 #endregion
 
-#region Import helper (private) function definitions.
-
-Invoke-Snippet -Name ScriptFile.Import -Parameters @{
-    Path = Join-Path -Path $PSModuleRoot -ChildPath helpers
-}
-
-#endregion
+# TODO: Consider verifying sn.exe is in the current path and verifying the authoring toolkit and other requirements are installed/available
 
 #region Define the Management Pack Configuration DSL.
 
@@ -114,7 +108,7 @@ New-DomainSpecificLanguage -Name $PSModule.Name -Syntax {
 
 #region Define any special processing to be used when invoking the domain-specific language.
 
-Register-KeywordEvent -DslName $PSModule.Name -KeywordPath ManagementPackConfiguration -Event OnInvoked -Action {
+Register-DslKeywordEvent -DslName $PSModule.Name -KeywordPath ManagementPackConfiguration -Event OnInvoked -Action {
     try {
         # Assign the configuration to another variable so that we can access it anywhere in this event
         $mpc = $_
