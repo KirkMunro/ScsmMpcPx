@@ -13,7 +13,7 @@ SCSM Authoring tool. All work is done in the management pack definition.
 
 ### Minimum requirements
 
-- PowerShell 3.0
+- PowerShell 4.0
 - SnippetPx module
 - LanguagePx module
 
@@ -35,8 +35,9 @@ limitations under the License.
 
 ### Installing the ScsmMpcPx module
 
-ScsmMpcPx is dependent on the SnippetPx module. You can download and install the
-latest versions of ScsmMpcPx and SnippetPx using any of the following methods:
+ScsmMpcPx is dependent on the LanguagePx and SnippetPx modules. You can download
+and install the latest versions of ScsmMpcPx, LanguagePx and SnippetPx using any
+of the following methods:
 
 #### PowerShellGet
 
@@ -46,6 +47,9 @@ package management. If you're curious to find out more, you should read this:
 
 Note that these commands require that you have the PowerShellGet module installed
 on the system where they are invoked.
+
+TODO: COMING SOON (once this module is stable -- it is experimental right now; the
+commands below do not work at the moment)
 
 ```powershell
 # If you don’t have ScsmMpcPx installed already and you want to install it for all
@@ -60,18 +64,20 @@ Install-Module ScsmMpcPx,LanguagePx,SnippetPx -Scope CurrentUser
 Update-Module
 ```
 
-#### PowerShell 3.0 or Later
+#### PowerShell 4.0 or Later
 
-To install from PowerShell 3.0 or later, open a native PowerShell console (not ISE,
+To install from PowerShell 4.0 or later, open a native PowerShell console (not ISE,
 unless you want it to take longer), and invoke one of the following commands:
 
 ```powershell
 # If you want to install ScsmMpcPx for all users or update a version already installed
 # (recommended, requires elevation for new install for all users)
-& ([scriptblock]::Create((iwr -uri http://tinyurl.com/Install-GitHubHostedModule).Content)) -ModuleName ScsmMpcPx,LanguagePx,SnippetPx
+& ([scriptblock]::Create((iwr -uri http://tinyurl.com/Install-GitHubHostedModule).Content)) -ModuleName SnippetPx
+& ([scriptblock]::Create((iwr -uri http://tinyurl.com/Install-GitHubHostedModule).Content)) -ModuleName ScsmMpcPx,LanguagePx -Branch master
 
 # If you want to install ScsmMpcPx for the current user
-& ([scriptblock]::Create((iwr -uri http://tinyurl.com/Install-GitHubHostedModule).Content)) -ModuleName ScsmMpcPx,LanguagePx,SnippetPx -Scope CurrentUser
+& ([scriptblock]::Create((iwr -uri http://tinyurl.com/Install-GitHubHostedModule).Content)) -ModuleName SnippetPx -Scope CurrentUser
+& ([scriptblock]::Create((iwr -uri http://tinyurl.com/Install-GitHubHostedModule).Content)) -ModuleName ScsmMpcPx,LanguagePx -Branch master -Scope CurrentUser
 ```
 
 ### How to load the module
@@ -83,7 +89,7 @@ Import-Module -Name ScsmMpcPx
 ```
 
 This command is not necessary if you are running Microsoft Windows
-PowerShell 3.0 or later and if module auto-loading is enabled (default).
+PowerShell 4.0 or later and if module auto-loading is enabled (default).
 
 ### ScsmMpcPx Commands
 
